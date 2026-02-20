@@ -14,6 +14,7 @@ Local authorship-analysis workflow for `HongLouMeng.txt` (120 chapters), focused
 ```bash
 python3.12 -m venv venv
 source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 Main code is in `src/`.  
