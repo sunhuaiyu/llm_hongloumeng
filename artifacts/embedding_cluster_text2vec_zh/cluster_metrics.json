@@ -1,0 +1,38 @@
+{
+  "model": "shibing624/text2vec-base-chinese-paraphrase",
+  "n_chunks": 1171,
+  "n_chapters": 120,
+  "metrics": [
+    {
+      "method": "kmeans_2",
+      "silhouette": 0.09302464872598648,
+      "ari": -0.0076427807553714295,
+      "nmi": 0.00010463729153890317,
+      "best_flip_accuracy": 0.5,
+      "best_split_chapter": 38,
+      "best_split_error_count": 48,
+      "label_transitions_across_chapters": 37
+    },
+    {
+      "method": "agglomerative_2",
+      "silhouette": 0.07595942914485931,
+      "ari": -0.001634295646916566,
+      "nmi": 0.02555741757251903,
+      "best_flip_accuracy": 0.55,
+      "best_split_chapter": 38,
+      "best_split_error_count": 42,
+      "label_transitions_across_chapters": 35
+    },
+    {
+      "method": "gmm_2",
+      "silhouette": 0.09368345141410828,
+      "ari": -0.006406396989651928,
+      "nmi": 0.000940383041605572,
+      "best_flip_accuracy": 0.5166666666666667,
+      "best_split_chapter": 38,
+      "best_split_error_count": 50,
+      "label_transitions_across_chapters": 41
+    }
+  ],
+  "best_method": "agglomerative_2"
+}

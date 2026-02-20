@@ -1,0 +1,34 @@
+{
+  "decision": "partial_support",
+  "boundary_near_80": false,
+  "change_point_binseg": 5,
+  "change_points_pelt": [],
+  "stylometry_eval": {
+    "auc_mean": 0.9782076491139039,
+    "auc_std": 0.009511630099679938,
+    "bacc_mean": 0.915771438655535,
+    "bacc_std": 0.028452418107886072,
+    "folds_used": 5
+  },
+  "stylometry_permutation_p": 0.004975124378109453,
+  "llm_eval": {
+    "auc_mean": 0.7352976190476191,
+    "auc_std": 0.12305050075867816,
+    "bacc_mean": 0.6142857142857142,
+    "bacc_std": 0.1722467249046054,
+    "folds_used": 5
+  },
+  "llm_permutation_p": 0.004975124378109453,
+  "fused_eval": {
+    "auc_mean": 0.9265476190476191,
+    "auc_std": 0.03790989137343419,
+    "bacc_mean": 0.7339285714285715,
+    "bacc_std": 0.045316348358748273,
+    "folds_used": 5
+  },
+  "fused_permutation_p": 0.004975124378109453,
+  "figures": {
+    "change_points": "artifacts/figures/chapter_change_points.png",
+    "stylometry_permutation": "artifacts/figures/stylometry_permutation_auc.png"
+  }
+}

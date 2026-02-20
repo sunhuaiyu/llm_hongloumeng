@@ -1,0 +1,10 @@
+Score this Hongloumeng excerpt using the required schema.
+
+Metadata:
+- chapter_id: {chapter_id}
+- chunk_id: {chunk_id}
+
+Text:
+{text}
+
+Return strict JSON only.

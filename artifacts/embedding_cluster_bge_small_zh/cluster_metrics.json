@@ -1,0 +1,38 @@
+{
+  "model": "BAAI/bge-small-zh-v1.5",
+  "n_chunks": 1171,
+  "n_chapters": 120,
+  "metrics": [
+    {
+      "method": "kmeans_2",
+      "silhouette": 0.08346700668334961,
+      "ari": -0.006523177665643238,
+      "nmi": 0.0004183601398909556,
+      "best_flip_accuracy": 0.5166666666666667,
+      "best_split_chapter": 16,
+      "best_split_error_count": 48,
+      "label_transitions_across_chapters": 43
+    },
+    {
+      "method": "agglomerative_2",
+      "silhouette": 0.07570649683475494,
+      "ari": -0.005269484743194955,
+      "nmi": 0.0009428414940745566,
+      "best_flip_accuracy": 0.525,
+      "best_split_chapter": 38,
+      "best_split_error_count": 51,
+      "label_transitions_across_chapters": 43
+    },
+    {
+      "method": "gmm_2",
+      "silhouette": 0.08661671727895737,
+      "ari": 0.0047731685124750055,
+      "nmi": 0.005200943230230295,
+      "best_flip_accuracy": 0.5583333333333333,
+      "best_split_chapter": 18,
+      "best_split_error_count": 41,
+      "label_transitions_across_chapters": 47
+    }
+  ],
+  "best_method": "gmm_2"
+}

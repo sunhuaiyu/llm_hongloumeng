@@ -1,0 +1,16 @@
+{
+  "name": "baseline",
+  "status": "ok",
+  "rows": 1171,
+  "chapters": 120,
+  "auc_mean": 0.9782076491139039,
+  "auc_std": 0.009511630099679938,
+  "bacc_mean": 0.915771438655535,
+  "bacc_std": 0.028452418107886072,
+  "perm_p": 0.009900990099009901,
+  "folds_used": 5,
+  "break_binseg": 5,
+  "breaks_pelt": [],
+  "boundary_near_80": false,
+  "style_significant": true
+}

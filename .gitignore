@@ -1,0 +1,17 @@
+# Python virtual environment (required local-only)
+venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# macOS
+.DS_Store
+
+# Local runtime/cache folders
+.cache/
+
+# Optional notebook/runtime artifacts
+.ipynb_checkpoints/

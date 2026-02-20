@@ -1,0 +1,44 @@
+[
+  {
+    "run": "e5_small",
+    "model": "intfloat/multilingual-e5-small",
+    "best_method": "gmm_2",
+    "best_flip_accuracy": 0.6833333333333333,
+    "best_split_chapter": 74,
+    "observed_near_80": false,
+    "best_split_error": 36,
+    "label_transitions": 39,
+    "null_near_80_rate": 0.0376,
+    "null_err_le_observed_rate": 0.0004,
+    "null_near_80_and_err_le_observed_rate": 0.0,
+    "topic_terms_removed": 400
+  },
+  {
+    "run": "bge_small_zh",
+    "model": "BAAI/bge-small-zh-v1.5",
+    "best_method": "agglomerative_2",
+    "best_flip_accuracy": 0.675,
+    "best_split_chapter": 19,
+    "observed_near_80": false,
+    "best_split_error": 34,
+    "label_transitions": 35,
+    "null_near_80_rate": 0.0136,
+    "null_err_le_observed_rate": 0.0008,
+    "null_near_80_and_err_le_observed_rate": 0.0,
+    "topic_terms_removed": 400
+  },
+  {
+    "run": "text2vec_zh",
+    "model": "shibing624/text2vec-base-chinese-paraphrase",
+    "best_method": "agglomerative_2",
+    "best_flip_accuracy": 0.7083333333333334,
+    "best_split_chapter": 101,
+    "observed_near_80": false,
+    "best_split_error": 30,
+    "label_transitions": 38,
+    "null_near_80_rate": 0.0,
+    "null_err_le_observed_rate": 0.0836,
+    "null_near_80_and_err_le_observed_rate": 0.0,
+    "topic_terms_removed": 400
+  }
+]

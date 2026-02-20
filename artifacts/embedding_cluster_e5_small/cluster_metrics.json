@@ -1,0 +1,38 @@
+{
+  "model": "intfloat/multilingual-e5-small",
+  "n_chunks": 1171,
+  "n_chapters": 120,
+  "metrics": [
+    {
+      "method": "kmeans_2",
+      "silhouette": 0.0728314071893692,
+      "ari": -0.001634295646916566,
+      "nmi": 0.0009912349229700506,
+      "best_flip_accuracy": 0.55,
+      "best_split_chapter": 16,
+      "best_split_error_count": 42,
+      "label_transitions_across_chapters": 40
+    },
+    {
+      "method": "agglomerative_2",
+      "silhouette": 0.05757910758256912,
+      "ari": 0.0020862614195361912,
+      "nmi": 0.012825409464875816,
+      "best_flip_accuracy": 0.55,
+      "best_split_chapter": 75,
+      "best_split_error_count": 49,
+      "label_transitions_across_chapters": 34
+    },
+    {
+      "method": "gmm_2",
+      "silhouette": 0.030487187206745148,
+      "ari": 0.43791565900846435,
+      "nmi": 0.34051665396767833,
+      "best_flip_accuracy": 0.8333333333333334,
+      "best_split_chapter": 76,
+      "best_split_error_count": 18,
+      "label_transitions_across_chapters": 27
+    }
+  ],
+  "best_method": "gmm_2"
+}

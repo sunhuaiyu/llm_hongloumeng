@@ -1,0 +1,16 @@
+{
+  "name": "name_masked",
+  "status": "ok",
+  "rows": 1171,
+  "chapters": 120,
+  "auc_mean": 0.9788545036203425,
+  "auc_std": 0.008808707005048351,
+  "bacc_mean": 0.9234884533371993,
+  "bacc_std": 0.006751528169005891,
+  "perm_p": 0.009900990099009901,
+  "folds_used": 5,
+  "break_binseg": 5,
+  "breaks_pelt": [],
+  "boundary_near_80": false,
+  "style_significant": true
+}

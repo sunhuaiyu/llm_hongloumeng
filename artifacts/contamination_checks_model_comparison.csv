@@ -1,0 +1,4 @@
+run,model,best_method,best_flip_accuracy,best_split_chapter,observed_near_80,best_split_error,label_transitions,null_near_80_rate,null_err_le_observed_rate,null_near_80_and_err_le_observed_rate,topic_terms_removed
+e5_small,intfloat/multilingual-e5-small,gmm_2,0.6833333333333333,74,False,36,39,0.0376,0.0004,0.0,400
+bge_small_zh,BAAI/bge-small-zh-v1.5,agglomerative_2,0.675,19,False,34,35,0.0136,0.0008,0.0,400
+text2vec_zh,shibing624/text2vec-base-chinese-paraphrase,agglomerative_2,0.7083333333333334,101,False,30,38,0.0,0.0836,0.0,400

@@ -1,0 +1,11 @@
+Analyze this excerpt from Hongloumeng and score literary signals.
+
+Metadata:
+- chapter_id: {chapter_id}
+- chunk_id: {chunk_id}
+- run_index: {run_index}
+
+Excerpt:
+{text}
+
+Return strict JSON only using the required schema.
