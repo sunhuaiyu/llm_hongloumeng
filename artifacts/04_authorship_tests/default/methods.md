@@ -1,0 +1,63 @@
+# Methods Used in This Run
+
+## Environment
+- Python: project-local `venv/` (Python 3.12.12)
+- Hardware target: Apple Silicon Mac
+- LLM runtime: `mlx-lm`
+- LLM model: `mlx-community/Qwen2.5-3B-Instruct-4bit`
+
+## Inputs
+- Novel text: `HongLouMeng.txt`
+- Chapter parsing output: `data/chapters/chapter_001.txt` ... `data/chapters/chapter_120.txt`
+- Chapter QC: `artifacts/01_parse/chapter_qc.csv`
+
+## Feature Extraction
+- Stylometric chunks: `src/extract_stylometry.py`
+  - chunk size: 1400 chars
+  - chunk stride: 700 chars
+  - min chunk chars: 450
+  - ngram hash features: 512
+- Outputs:
+  - `artifacts/02_stylometry/stylometry_chunk.parquet` (1171 rows)
+  - `artifacts/02_stylometry/stylometry_chapter.parquet` (120 rows)
+
+## LLM Literary Signals
+- Script: `src/llm_signals_mlx.py`
+- Prompt files:
+  - `prompts/literary_signs_system.txt`
+  - `prompts/literary_signs_user_template.txt`
+- This completed run used one representative chunk per chapter:
+  - Input: `artifacts/02_stylometry/experiments/chapter120/stylometry_chunk_one_per_chapter.parquet` (120 rows)
+  - repeats: 1
+  - max_tokens: 220
+  - parse_retries: 1
+  - checkpoint_every: 10
+- Outputs:
+  - `artifacts/03_llm_signals/runs/chapter120/llm_signals_chunk.parquet` (120 rows)
+  - `artifacts/03_llm_signals/runs/chapter120/llm_signals_chapter.parquet` (120 rows)
+
+## Main Statistical Test
+- Script: `src/run_tests.py`
+- Inputs:
+  - stylometry chunk/chapter from `artifacts/02_stylometry/`
+  - llm chunk from `artifacts/03_llm_signals/runs/chapter120/llm_signals_chunk.parquet`
+- permutations: 200
+- Outputs:
+  - `artifacts/04_authorship_tests/default/results.json`
+  - `artifacts/04_authorship_tests/default/main_results.md`
+  - `artifacts/04_authorship_tests/default/figures/chapter_change_points.png`
+  - `artifacts/04_authorship_tests/default/figures/stylometry_permutation_auc.png`
+
+## Robustness Ablations
+- Script: `src/run_ablations.py`
+- permutations per ablation: 100
+- Ablations executed:
+  - baseline
+  - narration_dominant
+  - exclude_short_chunks
+  - exclude_verse_heavy
+  - name_masked
+- Outputs:
+  - `artifacts/05_ablations/ablation_summary.json`
+  - `artifacts/05_ablations/ablation_summary.md`
+  - per-ablation feature and result files in `artifacts/05_ablations/`

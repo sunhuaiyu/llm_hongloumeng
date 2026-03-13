@@ -190,20 +190,28 @@ def main() -> None:
     parser.add_argument(
         "--stylometry-chunk",
         type=Path,
-        default=Path("artifacts/features/stylometry_chunk.parquet"),
+        default=Path("artifacts/02_stylometry/stylometry_chunk.parquet"),
     )
     parser.add_argument(
         "--stylometry-chapter",
         type=Path,
-        default=Path("artifacts/features/stylometry_chapter.parquet"),
+        default=Path("artifacts/02_stylometry/stylometry_chapter.parquet"),
     )
     parser.add_argument(
         "--llm-chunk",
         type=Path,
-        default=Path("artifacts/features/llm_signals_chunk.parquet"),
+        default=Path("artifacts/03_llm_signals/default/llm_signals_chunk.parquet"),
     )
-    parser.add_argument("--out-reports", type=Path, default=Path("artifacts/reports"))
-    parser.add_argument("--out-figures", type=Path, default=Path("artifacts/figures"))
+    parser.add_argument(
+        "--out-reports",
+        type=Path,
+        default=Path("artifacts/04_authorship_tests/default"),
+    )
+    parser.add_argument(
+        "--out-figures",
+        type=Path,
+        default=Path("artifacts/04_authorship_tests/default/figures"),
+    )
     parser.add_argument("--n-permutations", type=int, default=200)
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()

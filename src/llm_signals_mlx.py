@@ -189,13 +189,13 @@ def main() -> None:
     parser.add_argument(
         "--chunks",
         type=Path,
-        default=Path("artifacts/features/stylometry_chunk.parquet"),
+        default=Path("artifacts/02_stylometry/stylometry_chunk.parquet"),
         help="Chunk feature table from extract_stylometry.py",
     )
     parser.add_argument(
         "--out-dir",
         type=Path,
-        default=Path("artifacts/features"),
+        default=Path("artifacts/03_llm_signals/default"),
         help="Output directory.",
     )
     parser.add_argument(

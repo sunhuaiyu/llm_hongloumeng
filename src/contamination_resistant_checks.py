@@ -209,6 +209,18 @@ def save_json(obj, path: Path):
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def model_output_slug(model_id: str) -> str:
+    slug = model_id.split("/")[-1].lower()
+    replacements = {
+        "multilingual-e5-small": "e5_small",
+        "bge-small-zh-v1.5": "bge_small_zh",
+        "text2vec-base-chinese-paraphrase": "text2vec_zh",
+    }
+    if slug in replacements:
+        return replacements[slug]
+    return re.sub(r"[^a-z0-9]+", "_", slug).strip("_")
+
+
 def main():
     require_dependencies()
 
@@ -222,13 +234,15 @@ def main():
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--chapters-dir", type=Path, default=Path("data/chapters"))
-    parser.add_argument("--out-dir", type=Path, default=Path("artifacts/contamination_checks"))
+    parser.add_argument("--out-dir", type=Path, default=None)
     parser.add_argument("--e5-model", default="intfloat/multilingual-e5-small")
     parser.add_argument("--null-permutations", type=int, default=5000)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--topic-top-k", type=int, default=400)
     args = parser.parse_args()
 
+    if args.out_dir is None:
+        args.out_dir = Path("artifacts/07_contamination_checks") / model_output_slug(args.e5_model)
     args.out_dir.mkdir(parents=True, exist_ok=True)
     chapters = load_chapters(args.chapters_dir)
     chapter_ids = chapters["chapter_id"].to_numpy()
@@ -298,8 +312,8 @@ def main():
 
     # Optional: baseline e5 unsupervised result null-test (if existing).
     baseline_e5 = None
-    baseline_path = Path("artifacts/embedding_cluster_e5_small/chapter_cluster_assignments.parquet")
-    baseline_metrics_path = Path("artifacts/embedding_cluster_e5_small/cluster_metrics.json")
+    baseline_path = Path("artifacts/06_embedding_clustering/e5_small/chapter_cluster_assignments.parquet")
+    baseline_metrics_path = Path("artifacts/06_embedding_clustering/e5_small/cluster_metrics.json")
     if baseline_path.exists() and baseline_metrics_path.exists():
         base_df = pd.read_parquet(baseline_path).sort_values("chapter_id").reset_index(drop=True)
         base_metrics = json.loads(baseline_metrics_path.read_text(encoding="utf-8"))

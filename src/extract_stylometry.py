@@ -166,7 +166,7 @@ def main() -> None:
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--chapters-dir", type=Path, default=Path("data/chapters"))
-    parser.add_argument("--out-dir", type=Path, default=Path("artifacts/features"))
+    parser.add_argument("--out-dir", type=Path, default=Path("artifacts/02_stylometry"))
     parser.add_argument("--chunk-size", type=int, default=1400)
     parser.add_argument("--chunk-stride", type=int, default=700)
     parser.add_argument("--min-chunk-chars", type=int, default=450)

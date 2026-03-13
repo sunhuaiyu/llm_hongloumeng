@@ -163,9 +163,9 @@ def main() -> None:
     parser.add_argument(
         "--stylometry-chunk",
         type=Path,
-        default=Path("artifacts/features/stylometry_chunk.parquet"),
+        default=Path("artifacts/02_stylometry/stylometry_chunk.parquet"),
     )
-    parser.add_argument("--out-dir", type=Path, default=Path("artifacts/reports/ablations"))
+    parser.add_argument("--out-dir", type=Path, default=Path("artifacts/05_ablations"))
     parser.add_argument("--n-permutations", type=int, default=100)
     parser.add_argument("--seed", type=int, default=123)
     parser.add_argument("--dialogue-threshold", type=float, default=0.25)

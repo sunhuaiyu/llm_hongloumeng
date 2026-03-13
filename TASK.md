@@ -65,60 +65,65 @@ Operational decisions implemented:
 - `prompts/literary_signs_system_fast.txt`
 - `prompts/literary_signs_user_template_fast.txt`
 - `data/chapters/`
-- `artifacts/features/`
-- `artifacts/figures/`
-- `artifacts/reports/`
+- `artifacts/00_overview/`
+- `artifacts/01_parse/`
+- `artifacts/02_stylometry/`
+- `artifacts/03_llm_signals/`
+- `artifacts/04_authorship_tests/`
+- `artifacts/05_ablations/`
+- `artifacts/06_embedding_clustering/`
+- `artifacts/07_contamination_checks/`
 
 ## 6. Current Canonical Run Outputs
 
 ### 6.1 Parsing + Stylometry
 - Chapters parsed: 120
-- Chunk stylometry: `artifacts/features/stylometry_chunk.parquet` (1171 rows)
-- Chapter stylometry: `artifacts/features/stylometry_chapter.parquet` (120 rows)
+- Chunk stylometry: `artifacts/02_stylometry/stylometry_chunk.parquet` (1171 rows)
+- Chapter stylometry: `artifacts/02_stylometry/stylometry_chapter.parquet` (120 rows)
 
 ### 6.2 Full-Corpus LLM Literary Signals
 - Script: `src/llm_signals_mlx.py`
 - Model: `mlx-community/Qwen2.5-0.5B-Instruct-4bit`
 - Output:
-  - `artifacts/features/full1171_q05/llm_signals_chunk.parquet`
-  - `artifacts/features/full1171_q05/llm_signals_chapter.parquet`
+  - `artifacts/03_llm_signals/runs/full1171_q05/llm_signals_chunk.parquet`
+  - `artifacts/03_llm_signals/runs/full1171_q05/llm_signals_chapter.parquet`
 
 ### 6.3 Supervised Boundary Testing
 - Script: `src/run_tests.py`
 - Permutations: 200
 - Outputs:
-  - `artifacts/reports/full1171_q05/results.json`
-  - `artifacts/reports/full1171_q05/main_results.md`
-  - `artifacts/figures/full1171_q05/chapter_change_points.png`
-  - `artifacts/figures/full1171_q05/stylometry_permutation_auc.png`
+  - `artifacts/04_authorship_tests/full1171_q05/results.json`
+  - `artifacts/04_authorship_tests/full1171_q05/main_results.md`
+  - `artifacts/04_authorship_tests/full1171_q05/figures/chapter_change_points.png`
+  - `artifacts/04_authorship_tests/full1171_q05/figures/stylometry_permutation_auc.png`
 
 ### 6.4 Robustness Ablations (Stylometry)
 - Script: `src/run_ablations.py`
 - Outputs:
-  - `artifacts/reports/ablations/ablation_summary.json`
-  - `artifacts/reports/ablations/ablation_summary.md`
+  - `artifacts/05_ablations/ablation_summary.json`
+  - `artifacts/05_ablations/ablation_summary.md`
 
 ### 6.5 Baseline Embedding Unsupervised Clustering
 - Script: `src/embed_cluster_analysis.py`
 - Output dirs:
-  - `artifacts/embedding_cluster_bge_small_zh/`
-  - `artifacts/embedding_cluster_e5_small/`
-  - `artifacts/embedding_cluster_text2vec_zh/`
+  - `artifacts/06_embedding_clustering/bge_small_zh/`
+  - `artifacts/06_embedding_clustering/e5_small/`
+  - `artifacts/06_embedding_clustering/text2vec_zh/`
 - Comparison:
-  - `artifacts/embedding_cluster_comparison.md`
-  - `artifacts/embedding_cluster_comparison.csv`
-  - `artifacts/embedding_cluster_comparison.json`
+  - `artifacts/06_embedding_clustering/comparisons/embedding_cluster_comparison.md`
+  - `artifacts/06_embedding_clustering/comparisons/embedding_cluster_comparison.csv`
+  - `artifacts/06_embedding_clustering/comparisons/embedding_cluster_comparison.json`
 
 ### 6.6 Contamination-Resistant Cross-Model Checks
 - Script: `src/contamination_resistant_checks.py`
 - Output dirs:
-  - `artifacts/contamination_checks/`
-  - `artifacts/contamination_checks_bge_small_zh/`
-  - `artifacts/contamination_checks_text2vec_zh/`
+  - `artifacts/07_contamination_checks/e5_small/`
+  - `artifacts/07_contamination_checks/bge_small_zh/`
+  - `artifacts/07_contamination_checks/text2vec_zh/`
 - Cross-model comparison:
-  - `artifacts/contamination_checks_model_comparison.md`
-  - `artifacts/contamination_checks_model_comparison.csv`
-  - `artifacts/contamination_checks_model_comparison.json`
+  - `artifacts/07_contamination_checks/comparisons/contamination_checks_model_comparison.md`
+  - `artifacts/07_contamination_checks/comparisons/contamination_checks_model_comparison.csv`
+  - `artifacts/07_contamination_checks/comparisons/contamination_checks_model_comparison.json`
 
 Key contamination-resistant splits (masked/topic-suppressed):
 - `intfloat/multilingual-e5-small`: split 74 (not near 80)

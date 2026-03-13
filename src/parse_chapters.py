@@ -146,7 +146,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--metadata",
-        default=Path("artifacts/reports/chapter_qc.csv"),
+        default=Path("artifacts/01_parse/chapter_qc.csv"),
         type=Path,
         help="Output chapter metadata CSV.",
     )

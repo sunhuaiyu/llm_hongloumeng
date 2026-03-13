@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 
@@ -115,6 +116,18 @@ def save_table(df, base_path: Path) -> Path:
         return csv
 
 
+def model_output_slug(model_id: str) -> str:
+    slug = model_id.split("/")[-1].lower()
+    replacements = {
+        "bge-small-zh-v1.5": "bge_small_zh",
+        "multilingual-e5-small": "e5_small",
+        "text2vec-base-chinese-paraphrase": "text2vec_zh",
+    }
+    if slug in replacements:
+        return replacements[slug]
+    return re.sub(r"[^a-z0-9]+", "_", slug).strip("_")
+
+
 def main() -> None:
     require_dependencies()
 
@@ -132,7 +145,7 @@ def main() -> None:
     parser.add_argument(
         "--chunks",
         type=Path,
-        default=Path("artifacts/features/stylometry_chunk.parquet"),
+        default=Path("artifacts/02_stylometry/stylometry_chunk.parquet"),
         help="Chunk table with chunk_text/chapter_id/period_label.",
     )
     parser.add_argument(
@@ -143,10 +156,12 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--max-text-chars", type=int, default=1200)
     parser.add_argument("--device", default="cpu")
-    parser.add_argument("--out-dir", type=Path, default=Path("artifacts/embedding_cluster"))
+    parser.add_argument("--out-dir", type=Path, default=None)
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
+    if args.out_dir is None:
+        args.out_dir = Path("artifacts/06_embedding_clustering") / model_output_slug(args.model)
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
     chunk_df = load_table(args.chunks)
